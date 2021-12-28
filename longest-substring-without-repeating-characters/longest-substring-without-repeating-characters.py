@@ -8,14 +8,13 @@ class Solution:
         
         maxLength = 0
         sub = {} 
+        start = 0
         for i in range(len(s)):
             c = s[i]
-            if c in sub.keys():
-                while list(sub)[0] != c:
-                    sub.pop(list(sub)[0])
-                sub.pop(list(sub)[0])
+            if c in sub.keys() and start <= sub[c] <= i:
+                start = sub[c] + 1
                 sub[c] = i
             else:
                 sub[c] = i
-            maxLength = max(maxLength, len(sub))
+            maxLength = max(maxLength, i - start + 1)
         return maxLength
