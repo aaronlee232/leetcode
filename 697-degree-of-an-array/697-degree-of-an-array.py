@@ -4,16 +4,12 @@ class Solution:
         
         # get all frequencies
         for num in nums:
-            if num in numToFreq:
-                numToFreq[num] += 1
-            else:
-                numToFreq[num] = 1
+            numToFreq[num] = numToFreq.get(num, 0) + 1
         
         # find degree of array
         degree = 0
         for num in numToFreq.keys():
-            if numToFreq[num] > degree:
-                degree = numToFreq[num]
+            degree = max(degree, numToFreq[num])
         
         # find numbers that share same frequency as degree
         maxFreqNums = []
