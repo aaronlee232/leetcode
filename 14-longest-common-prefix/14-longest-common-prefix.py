@@ -3,9 +3,11 @@ class Solution:
         prefix = strs[0]
         for word in strs:
             i = 0
+            newPrefix = ""
             while i < len(prefix) and i < len(word) and word[i] == prefix[i]:
+                newPrefix += prefix[i]
                 i += 1
-            prefix = word[0:i]
+            prefix = newPrefix
         
         return prefix
         
